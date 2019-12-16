@@ -1,0 +1,37 @@
+.WeatherToday {
+    display: grid;
+    grid-template-columns:50% 50%;
+    grid-template-rows: 25% 25% 25% 25%;
+
+}
+
+.NameToday{
+    grid-area:1/1/2/2;
+    color:white;
+    font-size:25pt;
+    display:flex;
+    justify-content:flex-start;
+    flex-direction:column
+}
+
+.TempToday{
+    
+    grid-area:2/1/5/2;
+    color:white;
+    font-size:100pt
+}
+
+.IconToday{
+    
+    grid-area:1/2/3/3;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center
+}
+
+.AdditionalToday{
+    
+    grid-area:3/2/5/3;
+    color:white;
+}

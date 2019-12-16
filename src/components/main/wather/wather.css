@@ -1,0 +1,7 @@
+.Wather{
+   
+    height: 90vh;
+    display:grid;
+    grid-template-columns:50% 50%;
+    grid-template-rows: 10% 90%;
+}
