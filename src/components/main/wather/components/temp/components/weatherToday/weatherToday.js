@@ -10,9 +10,9 @@ class WeatherToday extends React.Component {
 
 render(){
     let TodoComponent;
-   
-    let w = this.props.state.watherData1.list[0].image.wDay * -120;
-    let h = this.props.state.watherData1.list[0].image.hDay * -120;
+
+    let w = this.props.state.watherData.list[0].image.wDay * -120;
+    let h = this.props.state.watherData.list[0].image.hDay * -120;
         TodoComponent = {
         width: `120px`,
         height: `120px`,
@@ -22,7 +22,7 @@ render(){
         
     }
 
-debugger;
+
     return (
         <div className = "WeatherToday">
            <div className = "NameToday">
@@ -31,17 +31,17 @@ debugger;
                <Clock state = {this.props.state}/>
               
            </div>
-           <div className = "TempToday">{this.props.state.watherData1.list[0].temp}</div>
+           <div className = "TempToday">{this.props.state.watherData.list[0].temp}</div>
            <div className = "IconToday">
                 <div style ={TodoComponent}>
 
                 </div>
            </div>
            <div className = "AdditionalToday">
-                <div>{this.props.state.watherData1.list[0].icon}</div>
-                <div>FEELS LIKE: {this.props.state.watherData1.list[0].feels_like}</div>
-                <div>WIND: {this.props.state.watherData1.list[0].wind_speed} m/s</div>
-                <div>HUMIDITY: {this.props.state.watherData1.list[0].humidity}%</div>
+                <div>{this.props.state.watherData.list[0].icon}</div>
+                <div>{this.props.state.watherData.list[0].feels_like}</div>
+                <div>{this.props.state.watherData.list[0].wind_speed} m/s</div>
+                <div>{this.props.state.watherData.list[0].humidity}%</div>
                 
            </div>
         </div>

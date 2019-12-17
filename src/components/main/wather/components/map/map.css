@@ -2,5 +2,10 @@
   /*  background-color: #4d5152;*/
 
     grid-area:2/2/3/3;
+    color:white;
+    display:flex;
+    align-items:center;
+    flex-direction:column;
 
+  
 }

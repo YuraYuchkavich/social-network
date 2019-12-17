@@ -6,6 +6,11 @@ import './setting.css';
 import {createobjectbackground} from '../../../../../redux/state';
 import {createobjectchangeF} from '../../../../../redux/state';
 import {createobjectChangeC} from '../../../../../redux/state';
+import {createobjectlangRU} from '../../../../../redux/state';
+import {createobjectlangEN} from '../../../../../redux/state';
+import {createobjectlangBE} from '../../../../../redux/state';
+
+
 
 
 class Setting extends React.Component {
@@ -28,13 +33,29 @@ class Setting extends React.Component {
         
         this.props.dispatch(action);
     }
+    changeLang = (event)=>{
+        let action ;
+        debugger;
+        if (event.target.value =='ru') {
+            action = createobjectlangRU();
+        }
+        if (event.target.value =='eng') {
+            action = createobjectlangEN();
+        }
+        if (event.target.value =='be') {
+            action = createobjectlangBE();
+        }
+        
+        this.props.dispatch(action);
+    }
 render(){
     return (
         <div className = "Setting">
            <button onClick={ this.changeBackground}><FontAwesomeIcon icon={faHistory} /></button>
-           <select>
-                <option>RU</option>
-                <option>EN</option>
+           <select  onChange = {this.changeLang}>
+                <option value ='eng'>ENG</option>
+                <option value = 'ru'>RU</option>
+                <option value = 'be'>BE</option>
            </select>
            <button onClick={ this.changeTempC}>C</button>
            <button onClick={ this.changeTempF}>F</button>
