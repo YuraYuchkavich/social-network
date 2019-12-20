@@ -8,24 +8,17 @@ import Main from './components/main/main';
 import Header from './components/header/header';
 
 
-class  App extends React.Component {
-
-  
-
-
-  render(){
-  
-    console.log(this.props);
+const  App = (props) => {
   return (
     <BrowserRouter>
       <div className="App">
         <Header/>
-        <Main state = {this.props.state} dispatch = {this.props.dispatch}/>     
+        <Main state = {props.state} dispatch = {props.dispatch}/>
       </div>
     </BrowserRouter>    
   );
   
   }
-}
+
 
 export default App;

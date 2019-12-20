@@ -5,29 +5,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 import './search.css';
-import {createobjectsearch} from '../../../../../redux/state';
+import {createobjectsearch} from '../../../../../redux/store';
+import {createobjectsearchUpdate} from '../../../../../redux/store';
 
 
-class Search extends React.Component {
-    constructor(props) {
-        super(props);
-        this.myRef = React.createRef();
+const Search = (props) => {
+  
+    let myRef = React.createRef();
+    let search = ()=>{  
+        let action = createobjectsearch(myRef.current.value);
+        props.dispatch(action);
     }
-
-    search = ()=>{  
-        let action = createobjectsearch(this.myRef.current.value);
-        this.props.dispatch(action);
+    let searchChange = ()=>{  
+        let action = createobjectsearchUpdate(myRef.current.value);
+        props.dispatch(action);
     }
-    render(){
+    debugger;
         return (
             <div className = "Search">
             
-            <input ref = {this.myRef}></input>
-            <button onClick={ this.search}><FontAwesomeIcon icon={faSearch} /></button>
+            <input ref = {myRef} onChange = {searchChange} value = {props.state.newSearch}></input>
+            <button onClick={search}><FontAwesomeIcon icon={faSearch} /></button>
             </div>
         )
-    }
-
     }
 
 export default Search;

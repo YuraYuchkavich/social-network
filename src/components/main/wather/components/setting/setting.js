@@ -3,12 +3,12 @@ import { faHistory } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import './setting.css';
-import {createobjectbackground} from '../../../../../redux/state';
-import {createobjectchangeF} from '../../../../../redux/state';
-import {createobjectChangeC} from '../../../../../redux/state';
-import {createobjectlangRU} from '../../../../../redux/state';
-import {createobjectlangEN} from '../../../../../redux/state';
-import {createobjectlangBE} from '../../../../../redux/state';
+import {createobjectbackground} from '../../../../../redux/store';
+import {createobjectchangeF} from '../../../../../redux/store';
+import {createobjectChangeC} from '../../../../../redux/store';
+import {createobjectlangRU} from '../../../../../redux/store';
+import {createobjectlangEN} from '../../../../../redux/store';
+import {createobjectlangBE} from '../../../../../redux/store';
 
 
 

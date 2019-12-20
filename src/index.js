@@ -3,19 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {setData,stateInit} from './redux/weather-reducer';
+import store from './redux/redux-store';
 
-import store from './redux/state';
-
-store.getData();
-
+ 
 
 let rerenderEntireTree = (state) =>{
   
-ReactDOM.render(<App state ={store.getState()} dispatch = {store.dispatch.bind(store)} />, document.getElementById('root'));
+ReactDOM.render(<App state ={state} dispatch = {store.dispatch.bind(store)} />, document.getElementById('root'));
 }
+async function start(){
+await setData();
+rerenderEntireTree(store.getState());
+}
+start();
 
-/*rerenderEntireTree(state);*/
-store.subcribe(rerenderEntireTree);
+store.subscribe(() => {
+    let state = store.getState();
+    rerenderEntireTree(state);
+});
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

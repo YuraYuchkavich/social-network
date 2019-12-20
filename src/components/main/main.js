@@ -10,24 +10,20 @@ import Notebook from './notebook/notebook';
 
 
 
-class Main extends React.Component {
- 
-
-render(){
-  
+const Main = (props) => {
     return (
         
             <div className = "Main">
-               
-                <Route path="/calendar" component={Calendar}/>
-                <Route path="/notebook" component={Notebook}/>
-                <Route path="/wather" render={()=><Wather state = {this.props.state} dispatch = {this.props.dispatch}/>}/>
+           
+            <Route path="/calendar" component={Calendar}/>
+            <Route path="/notebook" component={Notebook}/>
+            <Route path="/wather" render={()=><Wather state = {props.state.waetherReducer} dispatch = {props.dispatch}/>}/>
                 
             </div>
     
     )
 }
 
-}
+
 
 export default Main;
