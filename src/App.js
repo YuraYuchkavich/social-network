@@ -13,7 +13,7 @@ const  App = (props) => {
     <BrowserRouter>
       <div className="App">
         <Header/>
-        <Main state = {props.state} dispatch = {props.dispatch}/>
+        <Main/>
       </div>
     </BrowserRouter>    
   );

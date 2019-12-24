@@ -19,7 +19,7 @@ export let stateInit = {
     backgroundData:null,
     language:'ru',
     timezone:null,
-    newSearch:''
+    newSearch:'1'
 }
 export let setData = ()=>{
     return getData (stateInit)
@@ -27,20 +27,28 @@ export let setData = ()=>{
 
 
 const  weatherReducer = (state  = stateInit, action) => {
-
-    let setLoc = ()=>{
-        return getLocation(state);
-    }
+debugger;
     if(action.type == SEARCH ) {    
-        state.locationData.city=action.value; 
-        state.locationData.place=action.value; 
-        return state 
-    } else if(action.type == SEARCHUPDATE ) {    
-        state.newSearch=action.value;
-        return state 
+        let stateCopy  = {...state};
+        stateCopy.locationData = {...state.locationData};
+     
+        stateCopy.locationData.place=state.locationData.city;
+        let a = async ()=> {
+            await setData(stateCopy);
+           debugger;
+            }
+        a();
+        return stateCopy; 
+    } else if(action.type == SEARCHUPDATE ) { 
+        let stateCopy  = {...state};
+        stateCopy.locationData = {...state.locationData};
+     
+        stateCopy.locationData.city=action.value;
+      
+        return stateCopy; 
     } else {
         return state;
     }
-        return state;
 }
+      
 export default weatherReducer;

@@ -31,7 +31,7 @@ export async function getLocation(state){
     if (state.language == 'be') { lang = 'be_BY';}
   
     const URLIP = "https://geocode-maps.yandex.ru/1.x/?lang="+lang+"&apikey="+Token+"&format=json&geocode="+state.locationData.city;
-   debugger;
+
     let response = await fetch(URLIP);
     if (response.ok)
     {
@@ -41,7 +41,7 @@ export async function getLocation(state){
     state.locationData.place = json.response.GeoObjectCollection.featureMember[0].GeoObject.name;
     state.locationData.long = json.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ')[0];
     state.locationData.lat = json.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ')[1];
-    debugger;
+
     return getWatherDate(state);
  
     } else {
@@ -114,7 +114,7 @@ async function getWatherDate(state){
         info.day = text[0][checkday-1+i];
         state.watherData.list.push(info);
     }
-debugger;
+
    return state;
     } else {
     

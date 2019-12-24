@@ -14,10 +14,8 @@ import {createobjectlangBE} from '../../../../../redux/store';
 
 
 class Setting extends React.Component {
-    constructor(props) {
-        super(props);
-        
-    }
+   
+   
     changeBackground = ()=> {  
         let action = createobjectbackground();
         

@@ -4,7 +4,7 @@ import weatherReducer from './weather-reducer';
 let reducers = combineReducers({
     locationReducer:[2],
     backgroundReducer:[1],
-    waetherReducer: weatherReducer
+    weatherReducer: weatherReducer
 });
 
 let store = createStore(reducers);
