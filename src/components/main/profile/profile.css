@@ -1,0 +1,10 @@
+.Profile {
+    background-color: #7e9ddb;
+    height: 90vh;
+    display:grid;
+    grid-template-columns:20% 80%;
+    grid-template-rows: 100%;
+}
+
+
+

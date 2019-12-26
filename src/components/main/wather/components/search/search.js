@@ -18,11 +18,12 @@ const Search = (props) => {
        
         props.searchChange(myRef.current.value);
     }
-
+// onChange = {searchChange}
+//value = {props.newSearch}
         return (
             <div className = "Search">
             
-            <input ref = {myRef} onChange = {searchChange} value = {props.newSearch}></input>
+            <input ref = {myRef} ></input>
             <button onClick={search}><FontAwesomeIcon icon={faSearch} /></button>
             </div>
         )

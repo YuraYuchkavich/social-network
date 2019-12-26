@@ -1,0 +1,17 @@
+.Navbar {
+    background-color: #20295f;
+    height: 90vh;
+
+}
+
+.PMenu {
+    justify-content: flex-start ;
+    display: flex;
+    flex-direction:column;
+}
+  
+.PMenu a{
+  color:white;
+  margin:10px;
+  text-decoration:none;
+}

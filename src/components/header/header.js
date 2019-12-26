@@ -13,7 +13,7 @@ render(){
                 <div className="Second">SOCIAL</div>
             </div>
             <nav className="NavMenu">
-                <NavLink to="1.html">My Profile</NavLink>
+                <NavLink to="/profile">My Profile</NavLink>
                 <NavLink to="/calendar">Calender</NavLink>
                 <NavLink to="/notebook">Notebook</NavLink>
                 <a href="4.html">News</a>  

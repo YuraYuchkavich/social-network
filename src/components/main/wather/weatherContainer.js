@@ -6,6 +6,7 @@ import './weather.css';
 import fon from '../wather/photo-1541894736-a7a737ba00cb.jpeg';
 import {createobjectsearch} from '../../../redux/store';
 import {createobjectsearchUpdate} from '../../../redux/store';
+import {setWeatherAC} from '../../../redux/weather-reducer';
 /*const WeatherContainer = (props) => {
     
     return <StoreContext.Consumer>
@@ -55,10 +56,12 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        search: () =>{
-            dispatch(createobjectsearch())},
+        search: (value) =>{
+            dispatch(createobjectsearch(value))},
         searchChange: (value) => {
-            dispatch(createobjectsearchUpdate(value))}
+            dispatch(createobjectsearchUpdate(value))},
+        setWeather: (value) => {
+            dispatch(setWeatherAC(value))},
     }
 }
 

@@ -6,7 +6,7 @@ import {Provider} from 'react-redux'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {setData,stateInit} from './redux/weather-reducer';
+import {setData,stateInit} from './api/weatherAPI';
 import store from './redux/redux-store';
 
 

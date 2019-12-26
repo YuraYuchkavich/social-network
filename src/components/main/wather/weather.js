@@ -10,10 +10,12 @@ import fon from '../wather/photo-1541894736-a7a737ba00cb.jpeg';
 
 import {createobjectsearch} from '../../../redux/store';
 import {createobjectsearchUpdate} from '../../../redux/store';
-
+import {setData} from '../../../api/weatherAPI';
 
 const Wather = (props) => {
-    
+    debugger;
+    setData(props.weatherReducer)
+  
     return (
                 <div className ="Weather" >
                     <Setting />
@@ -23,6 +25,7 @@ const Wather = (props) => {
                 </div>
         
     )
+
 }
 
 
