@@ -35,7 +35,9 @@ const  weatherReducer = (state  = stateInit, action) => {
             }
         case SET_WEATHER:
             {
-                return {...state}
+                debugger;
+                return {...state,timezone:action.weather.ip}
+                debugger;
             }
         default:
             return state;
@@ -48,6 +50,6 @@ export default weatherReducer;
 export const setWeatherAC= (value) =>{
     return{
         type:SET_WEATHER,
-        users:[]
+        weather:value
     }
 }

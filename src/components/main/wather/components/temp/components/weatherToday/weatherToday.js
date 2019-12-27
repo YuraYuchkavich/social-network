@@ -6,7 +6,7 @@ import icons from './icons.png';
 import Clock from './Clock/clock';
 
 const  WeatherToday =(props) => {
-
+    debugger;
     let TodoComponent;
     let w = props.state.watherData.list[0].image.wDay * -120;
     let h = props.state.watherData.list[0].image.hDay * -120;
@@ -17,10 +17,11 @@ const  WeatherToday =(props) => {
         background: `url(${icons})`,
         backgroundPosition: `${h}px ${w}px`
         };
+       
     return (
         <div className = "WeatherToday">
            <div className = "NameToday">
-               <div>{props.state.locationData.place}, {props.state.locationData.country} </div>
+               <div>{props.state.timezone}, {props.state.locationData.country} </div>
                
                <Clock state = {props.state}/>
               

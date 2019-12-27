@@ -1,5 +1,5 @@
 import {infoWeather,image} from '../localization/localization';
-
+import axios from 'axios';
 
 export let stateInit = {
     watherDataT:null,
@@ -10,6 +10,26 @@ export let stateInit = {
     timezone:null,
     newSearch:'1'
 }
+
+
+export let getWeather = async (state)=>{
+    let location = await  getData()
+    return location
+}
+
+
+export  function getDataw(){
+    const URLIP = "https://ipinfo.io/json?token=6bea51d61920f9";
+          return fetch(URLIP).then(response =>{
+               debugger;return response.json();});
+    
+    
+    }
+
+
+
+
+
 export let setData = (state)=>{
     if (state == undefined) {
         state = stateInit;
@@ -42,7 +62,7 @@ export async function getData(state){
 
 export async function getLocation(state){
   debugger;
-  state.locationData.city = state.locationData.place;
+  
     let Token = "7f13e315-a4b6-4c40-89cf-22b5b18ba472";
     let lang ;
     if (state.language == 'ru') { lang = 'ru_Ru';}

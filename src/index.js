@@ -19,11 +19,11 @@ ReactDOM.render(
         <App />
     </Provider>, document.getElementById('root'));
 }
-async function start(){
-await setData();
+//async function start(){
+//await setData();
 rerenderEntireTree();
-}
-start();
+//}
+//start();
 
 
 // If you want your app to work offline and load faster, you can change

@@ -9,7 +9,7 @@ import {unfollowAC} from '../../../../../redux/users-reducer';
 
 let mapStateToProps = (state) => {
     return {
-       users:state.usersReducer.users
+       users:state.usersReducer.usersS
     }
 }
 
