@@ -43,15 +43,12 @@ render(){
     return (
         
             <div className = "Clock">
-               
-             
-               <Moment format='MMMM Do YYYY, h:mm:ss a' locale ={this.props.state.lang}>{this.state.date}</Moment>
-                
+                {this.props.state.timezone != null ? <Moment format='MMMM Do YYYY, h:mm:ss a' locale ={this.props.state.lang}>{this.state.date}</Moment> :  <div></div>}
+            
             </div>
     
     )
 }
-
 }
 
 export default Clock;

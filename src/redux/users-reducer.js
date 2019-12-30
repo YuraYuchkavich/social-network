@@ -46,7 +46,7 @@ const  usersReduserce = (state  = stateInit, action) => {
             }
         case SET_USERS:
             {   
-                debugger;
+               
                 return {...state, users:action.users}
             }
         default:

@@ -1,4 +1,4 @@
-import {stateInit} from '../api/weatherAPI';
+import {stateInit,getWeathern} from '../api/weatherAPI';
 
 
 
@@ -22,9 +22,16 @@ const  weatherReducer = (state  = stateInit, action) => {
             {
                 let stateCopy  = {...state};
                 stateCopy.locationData = {...state.locationData};
-                stateCopy.locationData.place=action.value;
+
                 stateCopy.locationData.city=action.value;
-                return stateCopy; 
+                let func = async () =>{
+                    let copyState = await getWeathern(action.value);
+                    debugger;
+                    return stateCopy; 
+                    }
+               func();
+              
+                //return stateCopy; 
             }
         case SEARCHUPDATE:
             {
@@ -35,9 +42,8 @@ const  weatherReducer = (state  = stateInit, action) => {
             }
         case SET_WEATHER:
             {
-                debugger;
-                return {...state,timezone:action.weather.ip}
-                debugger;
+                return {...state,WeatherData:action.weather.ip}
+               
             }
         default:
             return state;

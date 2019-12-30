@@ -14,7 +14,7 @@ render(){
         center:cord,
         zoom:`12`
     }
-
+debugger;
     return (
         <div className = "Map">
             <YMaps>

@@ -11,7 +11,7 @@ import fon from '../wather/photo-1541894736-a7a737ba00cb.jpeg';
 
 import {createobjectsearch} from '../../../redux/store';
 import {createobjectsearchUpdate} from '../../../redux/store';
-import {getDataw} from '../../../api/weatherAPI';
+import {getWeathern} from '../../../api/weatherAPI';
 
 class Wather extends React.Component {
 
@@ -22,7 +22,7 @@ class Wather extends React.Component {
    
     componentDidMount(){
         let func = async () =>{
-            let  state =  await getDataw();
+            let  state =  await getWeathern();
             debugger;
             this.props.setWeather(state);
         }
@@ -40,6 +40,7 @@ class Wather extends React.Component {
 
 
     render(){
+        debugger;
         return (
            
                     <div className ="Weather" >

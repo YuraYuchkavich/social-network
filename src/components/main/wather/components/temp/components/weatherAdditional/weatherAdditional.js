@@ -7,6 +7,12 @@ import icons from '../weatherToday/icons.png';
 const WeatherAdditional = (props) => {
     let TodoComponent= [];
     for (let i =1 ; i<4; i++){
+    let w;
+    let h;
+    if ((props.state.watherData.list[0].image.wDay == undefined) || (props.state.watherData.list[0].image.hDay == undefined)) {
+        h = -240;
+        w = -730;
+    } else {
     let w = props.state.watherData.list[i].image.wDay * -120;
     let h = props.state.watherData.list[i].image.hDay * -120;
         TodoComponent.push({
@@ -17,6 +23,7 @@ const WeatherAdditional = (props) => {
         backgroundPosition: `${h}px ${w}px`
         })
     };
+}   
     return (
         <div className = "WeatherAdditional">
            <div>{props.state.watherData.list[1].day}
