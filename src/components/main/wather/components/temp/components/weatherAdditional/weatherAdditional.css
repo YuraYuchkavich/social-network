@@ -3,5 +3,12 @@
     grid-template-columns:1fr 1fr 1fr;
     grid-template-rows: 100%;
     color:white;
-    font-size:10pt;
+    font-size:15pt;
+}
+.WeatherAdditionalTemp{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+
+    
 }

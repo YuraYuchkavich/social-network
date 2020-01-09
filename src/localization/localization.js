@@ -2,7 +2,7 @@
 export const infoWeather = {
     ru:[['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'],['ВЛАЖНОСТЬ','СКОРОСТЬ ВЕТРА','КАК ЧУВСТВУЕТСЯ'],['широта','долгота']],
     eng:[['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],['HUMIDYTI','WIND','FEELS LIKE'],['lat','long']],
-    be:[['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],['Humidyti','Wild','Speed'],['lat','long']]
+    be:[['Панядзелак','Аўторак','Серада','Чацьвер','Пятніца','Субота','Нядзеля'],['вільготнасць','хуткасць ветру','Як адчуваюць'],['шырата','даўгата']]
   
 }
 export const image = [

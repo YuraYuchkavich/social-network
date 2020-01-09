@@ -1,6 +1,8 @@
 .Setting {
   /*  background-color: #04882c;*/
-
     grid-area:1/1/2/2;
+    display: flex;
+    justify-content:center;
+    align-items:center;
 
 }

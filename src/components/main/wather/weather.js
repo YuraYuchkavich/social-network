@@ -8,10 +8,9 @@ import MapY from './components/map/map';
 import Temp from './components/temp/temp'
 import './weather.css';
 import fon from '../wather/photo-1541894736-a7a737ba00cb.jpeg';
+import loading from '../wather/Spinner-1s-200px.svg';
 
-import {createobjectsearch} from '../../../redux/store';
-import {createobjectsearchUpdate} from '../../../redux/store';
-import {getWeathern} from '../../../api/weatherAPI';
+import {getWeathern,getBackground} from '../../../api/weatherAPI';
 
 class Wather extends React.Component {
 
@@ -22,8 +21,9 @@ class Wather extends React.Component {
    
     componentDidMount(){
         let func = async () =>{
-            let  state =  await getWeathern();
-            debugger;
+        
+            let  state =  await getWeathern(this.props.weatherReducer,null,this.props.weatherReducer.language);
+    
             this.props.setWeather(state);
         }
        func();
@@ -34,22 +34,51 @@ class Wather extends React.Component {
         });*/
     }
 
-    componentDidUpdate(){
 
+    search = (value) => {
+        let func = async () =>{
+            let  state =  await getWeathern(this.props.weatherReducer,value,'ru');
+            this.props.setWeather(state);
+        }
+       func();
+
+    }
+
+    changeLang = (value) => {
+        let func = async () =>{
+            let  state =  await getWeathern(this.props.weatherReducer,null,value);
+            this.props.setWeather(state);
+        }
+       func();
+
+    }
+
+    updateBackground =() =>{
+        let func = async () =>{
+            let  state =  await getBackground(this.props.weatherReducer)
+            this.props.updateBackground(state.urls.full);
+        }
+       func();
     }
 
 
     render(){
-        debugger;
+        
+        let Background = {
+            backgroundImage: ` linear-gradient(to top, rgba(47, 79, 79,0.3), rgba(47, 79, 79,0.3)),url(${this.props.weatherReducer.backgroundData})`,
+            backgroundSize: `cover`,
+            backgroundPosition: `center`
+    
+        }
         return (
-           
-                    <div className ="Weather" >
-                        <Setting />
-                        <Search search = {this.props.search} searchChange = {this.props.searchChange} newSearch = {this.props.newSearch}/>
+            <>
+                    <div className ="Weather" style = {Background} >
+                        <Setting changeTempF = {this.props.changeTempF} changeTempC = {this.props.changeTempC} changeLang = {this.changeLang} updateBackground = {this.updateBackground}/>
+                        <Search search = {this.search} searchChange = {this.props.searchChange} newSearch = {this.props.newSearch}/>
                         <Temp state = {this.props.weatherReducer}/>
                         <MapY state = {this.props.weatherReducer}/>    
                     </div>
-            
+        </>
         )
 
     }

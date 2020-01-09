@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns:50% 50%;
     grid-template-rows: 25% 25% 25% 25%;
-
 }
 
 .NameToday{
@@ -26,12 +25,16 @@
     grid-area:1/2/3/3;
     color:white;
     display:flex;
-    justify-content:center;
+    justify-content:flex-start;
     align-items:center
 }
 
 .AdditionalToday{
-    
+    text-transform: uppercase;
     grid-area:3/2/5/3;
     color:white;
+    display:flex;
+    justify-content:flex-start;
+    flex-direction:column;
+    text-align: left;
 }

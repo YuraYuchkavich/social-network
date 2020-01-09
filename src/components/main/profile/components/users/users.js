@@ -1,29 +1,25 @@
 import React from 'react';
-import axios from 'axios';
 
-import './users.css';
+import styles from './users.module.css';
 
+let Users = (props) =>{
 
-class Users  extends React.Component {
-    constructor(props){
-        super(props);
-    }
-   
-    componentDidMount(){
-        axios.get(" https://social-network.samuraijs.com/api/1.0/users").then(response =>{
-        this.props.setUsers(response.data.items);
-    });
-    }
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
-    componentDidUpdate(){
+    let pages = [];
+        for (let i=1; i<=pagesCount; i++){
+            pages.push(i);
+        }
 
-    }
-
-    render(){
-        debugger;
-        return <div className = "Users">
+    return <div className = {styles.Users}>
+                <div>
+                    {pages.map( p => {
+                    return <span className = {props.currentPage ===p && styles.selectedPage }
+                    onClick = {() =>{props.onPageChanged(p)}}>{p}</span>
+                })}
+                </div>
                 {
-                    this.props.users.map( user => <div key = {user.id}>
+                    props.users.map( user => <div key = {user.id}>
                         <span>
                             <div>
                                 <img />
@@ -42,10 +38,6 @@ class Users  extends React.Component {
                     )
                 }
             </div>
-        
-    }
 }
-
-
 
 export default Users;

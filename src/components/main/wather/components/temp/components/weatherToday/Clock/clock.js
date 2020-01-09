@@ -15,7 +15,8 @@ class Clock extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-           date:moment().zone(this.props.state.timezone)
+           date:new Date()
+   
         };
     }
 
@@ -32,7 +33,7 @@ class Clock extends React.Component {
     
       tick() {
         this.setState({
-          date:moment().zone(this.props.state.timezone)
+          date:new Date()
         });
       }
     
@@ -41,12 +42,11 @@ render(){
 
 
     return (
-        
             <div className = "Clock">
-                {this.props.state.timezone != null ? <Moment format='MMMM Do YYYY, h:mm:ss a' locale ={this.props.state.lang}>{this.state.date}</Moment> :  <div></div>}
-            
+              <Moment format='MMMM Do YYYY, h:mm:ss a' locale = {this.props.state.language}>{this.state.date}</Moment>
+             
             </div>
-    
+
     )
 }
 }

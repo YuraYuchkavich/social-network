@@ -30,12 +30,15 @@ const  WeatherToday =(props) => {
     return (
         <div className = "WeatherToday">
            <div className = "NameToday">
-               <div>{props.state.locationData.city} {props.state.locationData.country} </div>
+               <div>{props.state.locationData.place} {props.state.locationData.country} </div>
                
                <Clock state = {props.state}/>
               
            </div>
-           <div className = "TempToday">{props.state.watherData.list[0].temp}</div>
+           <div className = "TempToday">
+               {props.state.watherData.list[0].temp}
+               <span>&ordm;</span>
+           </div>
            <div className = "IconToday">
                 <div style ={TodoComponent}>
 

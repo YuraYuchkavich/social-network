@@ -13,17 +13,19 @@ render(){
     TodoComponent = {
         center:cord,
         zoom:`12`
+     
     }
-debugger;
+
     return (
         <div className = "Map">
-            <YMaps>
-             
-             <Map state={TodoComponent} />
-           </YMaps>
+            <div className = 'YMaps'>
+                <YMaps>
+                    <Map state={TodoComponent} className = 'YMap'/>
+                </YMaps>
+            </div>
            <div>
-              { /* <div>{this.props.state.watherData.list[0].posTranslate[0]}: {cord[0]}</div>
-                <div>{this.props.state.watherData.list[0].posTranslate[1]}: {cord[1]}</div>*/}
+               <div>{this.props.state.watherData.list[0].posTranslate[0]}: {cord[0]}</div>
+               <div>{this.props.state.watherData.list[0].posTranslate[1]}: {cord[1]}</div>
            </div>
         </div>
     )

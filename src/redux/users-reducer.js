@@ -2,14 +2,15 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRETN_PAGE = 'SET_CURRETN_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 export let stateInit ={
-    users: [
-    /*{id:1,fullName: 'Yury', status:'I am a boss', location:{city: 'Minsk',country:'Belarus'},followed:false},
-    {id:1,fullName: 'dima', status:'I am a boss', location:{city: 'Kiev',country:'Belarus'},followed:false},
-    {id:1,fullName: 'Sasha', status:'I am a boss', location:{city: 'Moscow',country:'Belarus'},followed:true},
-    {id:1,fullName: 'Yury', status:'I am a boss', location:{city: 'London',country:'Belarus'},followed:true}*/
-]
+    users: [],
+    pageSize:100,
+    totalUsersCount: null ,
+    currentPage: null
+
 };
 
 const  usersReduserce = (state  = stateInit, action) => {
@@ -49,6 +50,16 @@ const  usersReduserce = (state  = stateInit, action) => {
                
                 return {...state, users:action.users}
             }
+        case SET_CURRETN_PAGE:
+            {   
+               
+                return {...state, currentPage:action.currentPage}
+            }
+        case SET_TOTAL_USERS_COUNT:
+            {   
+               
+                return {...state, totalUsersCount:action.totalUsersCount}
+            }
         default:
             return state;
     }
@@ -56,7 +67,7 @@ const  usersReduserce = (state  = stateInit, action) => {
       
 export default usersReduserce;
 
-export const followAC = (value) =>{
+export const follow = (value) =>{
     return{
         type:FOLLOW,
         userId:value
@@ -64,16 +75,31 @@ export const followAC = (value) =>{
     }
 }
 
-export const unfollowAC = (value) =>{
+export const unfollow = (value) =>{
     return{
         type:UNFOLLOW,
         userId:value
     }
 }
 
-export const setUsersAC= (value) =>{
+export const setUsers = (value) =>{
     return{
         type:SET_USERS,
         users:value
+    }
+}
+
+
+export const setCurrentPage = (value) =>{
+    return{
+        type:SET_CURRETN_PAGE,
+        currentPage:value
+    }
+}
+
+export const setTotalUsersCount = (value) =>{
+    return{
+        type:SET_TOTAL_USERS_COUNT,
+        totalUsersCount:value
     }
 }
