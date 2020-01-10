@@ -8,6 +8,17 @@
 
 }
 
-.form {
+.Form {
+    
     width: 50%;
+}
+
+.Speech {
+    border-radius: 20px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.SearchInput{
+    border-radius: 10px;
 }

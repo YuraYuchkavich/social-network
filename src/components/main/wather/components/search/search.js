@@ -25,11 +25,11 @@ const Search = (props) => {
 //value = {props.newSearch}
         return (
             <div className = "Search" >
-                <div className = "form input-group mb-3" >
-                    <input  className="form-control"  ref = {myRef}  type="text"></input>
+                <div className = "Form input-group mb-3" >
+                    <Speech search = {props.search} />
+                    <input  className="form-control SearchInput"  ref = {myRef}  type="text"></input>
                     <div className="input-group-append">
-                        <Speech search = {props.search} />
-                        <button  className="btn btn-outline-secondary" onClick={search}><FontAwesomeIcon icon={faSearch} /></button>
+                        <button  className="btn btn-secondary" onClick={search}><FontAwesomeIcon icon={faSearch} /></button>
                     </div>
                 </div>
             </div>

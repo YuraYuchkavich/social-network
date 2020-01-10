@@ -11,7 +11,7 @@ import {getWeathern} from '../api/weatherAPI';
     ]},
     locationData:{city:null, place:null, country:null, lat:null, long:null},
     backgroundData:null,
-    language:'ru',
+    language:'eng',
     typeTemp:'C',
     timezone:null,
     newSearch:'1',
@@ -20,7 +20,7 @@ import {getWeathern} from '../api/weatherAPI';
 
 const SEARCH = 'SEARCH';
 const UPDATE_BACKGROUND = 'UPDATE_BACKGROUND';
-const UPDATE = 'UPDATE';
+const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
 const CHANGE_TEMP_F = 'CHANGE_TEMP_F';
 const CHANGE_TEMP_C = 'CHANGE_TEMP_C';
 const SEARCHUPDATE = 'SEARCHUPDATE';
@@ -36,6 +36,7 @@ const  weatherReducer = (state  = stateIni, action) => {
         case SEARCH:
             {
                 let stateCopy  = {...state};
+                debugger;
                     stateCopy.locationData = {...state.locationData};
                     stateCopy.locationData.city=action.value;
                     return stateCopy; 
@@ -51,7 +52,7 @@ const  weatherReducer = (state  = stateIni, action) => {
             {
                 let stateCopy  = {...state};
                 stateCopy.locationData = {...state.locationData};
-                stateCopy.locationData.city=action.weather.locationData.city;
+                stateCopy.locationData=action.weather.locationData;
                
                 debugger;
                 return stateCopy;
@@ -102,6 +103,15 @@ const  weatherReducer = (state  = stateIni, action) => {
                 return stateCopy;
                
             }
+        case CHANGE_LANGUAGE:
+            {
+                let stateCopy  = {...state};
+                stateCopy.language = {...state.language};
+                stateCopy.language=action.language;
+                debugger;
+                return stateCopy;
+                   
+            }
         default:
             return state;
     }
@@ -132,5 +142,12 @@ export const createObjectBackground = (value) =>{
     return{
         type:UPDATE_BACKGROUND,
         background:value
+    }
+}
+
+export const createObjectLanguage = (value) =>{
+    return{
+        type:CHANGE_LANGUAGE,
+        language:value
     }
 }

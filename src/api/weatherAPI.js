@@ -26,7 +26,7 @@ export let getWeathern = async (stateInit,city,lang) => {
     } else {
         stateInit.locationData.city = city;
     }
-   debugger;
+ 
     let location = await getLocation1(stateInit);
   
     stateInit.locationData.country = location.response.GeoObjectCollection.featureMember[0].GeoObject.description;
@@ -88,7 +88,7 @@ export let getWeathern = async (stateInit,city,lang) => {
             if(checkday==7)   checkday=0;
           
         }
-        debugger
+      
         stateInit.watherData.list[i].day = text[0][checkday-1+i];
     }
     let background = await getBackground(stateInit);
@@ -128,7 +128,8 @@ export  function getLocation1(state){
 
 
 export function getBackground(state){
-    let Token = "8f1b7da5f439a5a35d15145d29e21523003c96f81c726417b70068305562632b";
+    let Token = "88debe502ef3d70a3df14974c45647067f796c309bead8409376aa75355a60f6";
+    debugger;
     let URLB =  "https://api.unsplash.com/photos/random?orientation=landscape&per_page=1&query=town,"+state.locationData.city+"&client_id="+Token;
     return fetch(URLB).then(response =>{
        return response.json();});

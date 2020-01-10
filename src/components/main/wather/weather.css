@@ -2,8 +2,9 @@
    
     height: 90vh;
     display:grid;
-    grid-template-columns:50% 50%;
-    grid-template-rows: 10% 90%;
+    grid-template-columns:repeat(auto-fill, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+
     font-family: 'Montserrat', sans-serif;
 
 }

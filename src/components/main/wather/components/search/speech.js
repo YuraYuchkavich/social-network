@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import SpeechRecognition from "react-speech-recognition";
+import { faMicrophone } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import './search.css';
 
 const propTypes = {
   // Props injected by SpeechRecognition
@@ -23,10 +27,14 @@ const Dictaphone = ({
   if (!browserSupportsSpeechRecognition) {
     return null;
   }
-  search(transcript);
+  
+ let callApi = () =>{
+   stopListening();
+   search(transcript)
+ }
   return (
     <div>
-      <button onMouseDown = {startListening} onMouseUp = {stopListening}>Reset</button>
+      <button className="btn btn-secondary Speech" onMouseDown = {startListening} onMouseUp = {() =>callApi()}><FontAwesomeIcon icon={faMicrophone} /></button>
     </div>
   );
 };

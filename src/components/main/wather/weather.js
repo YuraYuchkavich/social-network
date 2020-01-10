@@ -36,8 +36,9 @@ class Wather extends React.Component {
 
 
     search = (value) => {
+        this.props.search(value);
         let func = async () =>{
-            let  state =  await getWeathern(this.props.weatherReducer,value,'ru');
+            let  state =  await getWeathern(this.props.weatherReducer,value,this.props.weatherReducer.language);
             this.props.setWeather(state);
         }
        func();
@@ -45,8 +46,9 @@ class Wather extends React.Component {
     }
 
     changeLang = (value) => {
+        this.props.changeLanguage(value)
         let func = async () =>{
-            let  state =  await getWeathern(this.props.weatherReducer,null,value);
+            let  state =  await getWeathern(this.props.weatherReducer,this.props.weatherReducer.locationData.city,value);
             this.props.setWeather(state);
         }
        func();
