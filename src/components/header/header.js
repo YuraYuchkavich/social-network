@@ -17,8 +17,11 @@ render(){
                 <NavLink to="/calendar">Calender</NavLink>
                 <NavLink to="/notebook">Notebook</NavLink>
                 <a href="4.html">News</a>  
-                <NavLink to="/wather">Wather</NavLink>  
+                <NavLink to="/wather">Wather</NavLink> 
             </nav>
+            <div className = "LoginBlock">
+                 {this.props.isAuth ? <NavLink to="/login">{this.props.login}</NavLink> : <NavLink to="/login">Login</NavLink>   }
+            </div>
         </div>
     )
 }

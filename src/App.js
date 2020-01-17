@@ -5,14 +5,14 @@ import {BrowserRouter} from "react-router-dom"
 
 
 import Main from './components/main/main';
-import Header from './components/header/header';
+import HeaderContainer from './components/header/headerContainer';
 
 
 const  App = (props) => {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header/>
+        <HeaderContainer/>
         <Main/>
       </div>
     </BrowserRouter>    

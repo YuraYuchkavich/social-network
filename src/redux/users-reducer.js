@@ -4,7 +4,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_CURRETN_PAGE = 'SET_CURRETN_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
-
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 export let stateInit ={
     users: [],
     pageSize:100,
@@ -60,6 +60,10 @@ const  usersReduserce = (state  = stateInit, action) => {
                
                 return {...state, totalUsersCount:action.totalUsersCount}
             }
+        case SET_USER_PROFILE:
+            {
+                return state;
+            }   
         default:
             return state;
     }
@@ -100,6 +104,13 @@ export const setCurrentPage = (value) =>{
 export const setTotalUsersCount = (value) =>{
     return{
         type:SET_TOTAL_USERS_COUNT,
+        totalUsersCount:value
+    }
+}
+
+export const setUserProfile = (value) =>{
+    return{
+        type:SET_USER_PROFILE,
         totalUsersCount:value
     }
 }

@@ -10,7 +10,8 @@ const  Navbar  = () => {
         <div className = "Navbar">
             <nav className="PMenu">
                 <NavLink to="/profile/message">Message</NavLink>
-                <NavLink to="/profile/users">User</NavLink>  
+                <NavLink to="/profile/users">User</NavLink>
+                <NavLink to="/profile/view/">ProfileView</NavLink>   
             </nav>
         </div>
     )

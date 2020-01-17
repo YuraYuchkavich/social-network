@@ -3,7 +3,7 @@
    
     grid-area:1/1/2/2;
     display:grid;
-    grid-template-columns:30% 70%;
+    grid-template-columns:20% 60% 20%;
     grid-template-rows: 100%;
     
 }
@@ -12,13 +12,12 @@
     color:white;	
     display:flex;	
     align-items:center;
-    grid-column:1/2;
 }
 
 .NavMenu{
     justify-content: flex-end ;
     display: flex;
-    grid-column:2/3;
+   
     align-items:center;
 }
 
@@ -32,6 +31,11 @@
     color:red;
 }
 
+.LoginBlock{
+    color:rgb(231, 224, 210);
+    margin:10px;
+    text-decoration:none;
+}
 
 
 
