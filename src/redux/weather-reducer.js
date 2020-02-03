@@ -151,3 +151,17 @@ export const createObjectLanguage = (value) =>{
         language:value
     }
 }
+
+export const createobjectsearch = (value) =>{
+    return{
+        type:SEARCH ,
+        value:value
+    }
+}
+
+export const createobjectsearchUpdate = (value) =>{
+    return{
+        type:SEARCHUPDATE,
+        value:value
+    }
+}

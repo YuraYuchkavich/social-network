@@ -4,9 +4,7 @@ import {connect} from 'react-redux';
 import Weather from './weather';
 import './weather.css';
 import fon from '../wather/photo-1541894736-a7a737ba00cb.jpeg';
-import {createobjectsearch} from '../../../redux/store';
-import {createobjectsearchUpdate} from '../../../redux/store';
-import {setWeatherAC,createObjectChangeF,ceateObjectChangeC,createObjectBackground,createObjectLanguage} from '../../../redux/weather-reducer';
+import {setWeatherAC,createObjectChangeF,ceateObjectChangeC,createObjectBackground,createObjectLanguage,createobjectsearch,createobjectsearchUpdate} from '../../../redux/weather-reducer';
 
 
 /*const WeatherContainer = (props) => {

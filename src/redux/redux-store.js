@@ -1,8 +1,9 @@
-import {createStore, combineReducers} from "redux";
+import {createStore, combineReducers, applyMiddleware} from "redux";
 import weatherReducer from './weather-reducer';
 import usersReducer from './users-reducer';
 import profileReducer from './profile-reducer';
 import authReducer from './auth-reducer';
+import thunk from "redux-thunk";
 
 let reducers = combineReducers({
     locationReducer:[2],
@@ -13,7 +14,7 @@ let reducers = combineReducers({
     authReducer:authReducer
 });
 
-let store = createStore(reducers);
+let store = createStore(reducers,applyMiddleware(thunk));
 
 export default store;
 window.store = store ;

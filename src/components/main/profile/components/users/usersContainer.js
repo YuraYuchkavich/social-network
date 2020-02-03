@@ -4,12 +4,8 @@ import axios from 'axios';
 
 import Users from './users';
 import './users.module.css';
+import {follow,unfollow,setCurrentPage,setToggleIsFollowing,getUsers} from '../../../../../redux/users-reducer';
 
-import {setUsers} from '../../../../../redux/users-reducer';
-import {follow} from '../../../../../redux/users-reducer';
-import {unfollow} from '../../../../../redux/users-reducer';
-import {setCurrentPage} from '../../../../../redux/users-reducer';
-import {setTotalUsersCount} from '../../../../../redux/users-reducer';
 
 class UsersContainer extends React.Component {
     constructor(props){
@@ -17,17 +13,13 @@ class UsersContainer extends React.Component {
     }
    
     componentDidMount(){
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response =>{
-        this.props.setUsers(response.data.items);
-        this.props.setTotalUsersCount(response.data.totalCount);
-    });
+        this.props.getUsers(this.props.currentPage,this.props.pageSize);
     }
 
     onPageChanged = (pageNumber) =>{
-        this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response =>{
-        this.props.setUsers(response.data.items);
-    });
+
+        this.props.getUsersThunkCreator(pageNumber,this.props.pageSize);
+     
     }
 
     render(){
@@ -38,7 +30,10 @@ class UsersContainer extends React.Component {
                       pageSize = {this.props.pageSize}
                       onPageChanged = {this.onPageChanged}
                       users = {this.props.users}
-
+                      follow = {this.props.follow}
+                      unfollow = {this.props.unfollow}
+                      followingInProgress = {this.props.followingInProgress}
+                      setToggleIsFollowing = {this.props.setToggleIsFollowing}
                /> 
         
     }
@@ -50,7 +45,9 @@ let mapStateToProps = (state) => {
        users:state.usersReducer.users,
        pageSize: state.usersReducer.pageSize,
        totalUsersCount: state.usersReducer.totalUsersCount,
-       currentPage:state.usersReducer.currentPage
+       currentPage:state.usersReducer.currentPage,
+       followingInProgress:state.usersReducer.followingInProgress
+
     }
 }
 
@@ -69,4 +66,4 @@ let mapStateToProps = (state) => {
     }
 }*/
 
-export default connect(mapStateToProps,{follow,unfollow,setUsers,setCurrentPage,setTotalUsersCount})(UsersContainer);
+export default connect(mapStateToProps,{follow,unfollow,setCurrentPage,setToggleIsFollowing,getUsers})(UsersContainer);

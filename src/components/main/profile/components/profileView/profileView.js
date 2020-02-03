@@ -1,12 +1,11 @@
 import React from 'react';
 
 import styles from './profileView.module.css';
-import { NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 let ProfileView = (props) =>{
-debugger;
+    if (props.isAuth == false) return <Redirect to = {"/login"}/>
     if (!props.profile) {
-        debugger
         return (
             <div className = {styles.ProfileView}>
                test

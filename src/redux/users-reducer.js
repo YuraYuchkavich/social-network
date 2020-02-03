@@ -1,22 +1,25 @@
-
+import  {UsersAPI} from '../api/profileAPI';
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_CURRETN_PAGE = 'SET_CURRETN_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const TOGGLE_IS_FOLLOWING = 'TOGGLE_IS_FOLLOWING';
 export let stateInit ={
     users: [],
     pageSize:100,
     totalUsersCount: null ,
-    currentPage: null
-
+    currentPage: null,
+    isFetching: true,
+    followingInProgress: false
 };
 
 const  usersReduserce = (state  = stateInit, action) => {
     switch(action.type){
         case FOLLOW:
             {
+                debugger;
                 let stateCopy  = {...state};
                 stateCopy.users =state.users.map( user =>
                     {
@@ -62,7 +65,13 @@ const  usersReduserce = (state  = stateInit, action) => {
             }
         case SET_USER_PROFILE:
             {
+               
                 return state;
+            }
+        case TOGGLE_IS_FOLLOWING:
+            {
+                debugger;
+                return {...state, followingInProgress:action.followingInProgress}
             }   
         default:
             return state;
@@ -71,7 +80,7 @@ const  usersReduserce = (state  = stateInit, action) => {
       
 export default usersReduserce;
 
-export const follow = (value) =>{
+export const followSuccess = (value) =>{
     return{
         type:FOLLOW,
         userId:value
@@ -79,7 +88,7 @@ export const follow = (value) =>{
     }
 }
 
-export const unfollow = (value) =>{
+export const unfollowSuccess = (value) =>{
     return{
         type:UNFOLLOW,
         userId:value
@@ -111,6 +120,49 @@ export const setTotalUsersCount = (value) =>{
 export const setUserProfile = (value) =>{
     return{
         type:SET_USER_PROFILE,
-        totalUsersCount:value
+        userProfile:value
     }
+}
+
+export const setToggleIsFollowing = (value) =>{
+    return{
+        type:TOGGLE_IS_FOLLOWING,
+        followingInProgress:value
+    }
+}
+
+
+export const getUsers =(currentPage,pageSize) =>{ 
+    return (dispatch) =>{
+        UsersAPI.getUsers(currentPage,pageSize).then(response =>{
+        dispatch(setUsers(response.items));
+        dispatch(setTotalUsersCount(response.totalCount));
+    });
+}
+}
+
+export const follow =(userId) =>{ 
+    return (dispatch) =>{
+        dispatch(setToggleIsFollowing(true));
+        UsersAPI.follow(userId).then(response =>{
+            if (response.data.resultCode == 0){
+                dispatch(followSuccess(userId)); 
+            }
+            dispatch(setToggleIsFollowing(false));
+        });
+        
+}
+}
+
+export const unfollow =(userId) =>{ 
+    return (dispatch) =>{
+        dispatch(setToggleIsFollowing(true));
+        UsersAPI.follow(userId).then(response =>{
+            if (response.data.resultCode == 0){
+                dispatch(unfollowSuccess(userId)); 
+            }
+            dispatch(setToggleIsFollowing(false));
+        });
+        
+}
 }

@@ -1,8 +1,11 @@
 import React from 'react';
+import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 
 import styles from './users.module.css';
 import userPhoto from './defaultUserPhoto.png';
-import { NavLink } from 'react-router-dom';
+import {UsersAPI} from '../../../../../api/profileAPI'; 
+
 
 let Users = (props) =>{
 
@@ -12,7 +15,7 @@ let Users = (props) =>{
         for (let i=1; i<=pagesCount; i++){
             pages.push(i);
         }
-
+    
     return <div className = {styles.Users}>
                 <div>
                     {pages.map( p => {
@@ -29,8 +32,18 @@ let Users = (props) =>{
                                 </NavLink>
                             </div>
                             <div>
-                                {user.followed ?    <button>follow</button> :     <button>unfollow</button>}
-                            
+                                {
+                                user.followed ? <button disabled = {props.followingInProgress} onClick = 
+                                                    { 
+                                                        () => { props.unfollow(user.id); } 
+                                                    }
+                                                >unfollow</button> : 
+                                                <button disabled = {props.followingInProgress} onClick = 
+                                                    { 
+                                                        () => { props.follow(user.id); } 
+                                                    }
+                                                >follow</button> 
+                                }
                             </div>
                         </span>
                         <span>

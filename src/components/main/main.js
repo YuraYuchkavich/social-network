@@ -7,17 +7,18 @@ import WeatherContainer from './wather/weatherContainer'
 import Calendar from './calendar/calendar';
 import Notebook from './notebook/notebook';
 import ProfileContainer from './profile/profileContainer';
+import Login from './login/login';
 
 const Main = (props) => {
 
     return (
         
             <div className = "Main">
-           <Route path="/profile" component={ProfileContainer}/>
-            <Route path="/calendar" component={Calendar}/>
-            <Route path="/notebook" component={Notebook}/>
-            <Route path="/wather" render={()=><WeatherContainer/>}/>
-                
+                <Route path="/profile" component={ProfileContainer}/>
+                <Route path="/calendar" component={Calendar}/>
+                <Route path="/notebook" component={Notebook}/>
+                <Route path="/wather" render={()=><WeatherContainer/>}/>
+                <Route path="/login" render={()=><Login/>}/>
             </div>
     
     )

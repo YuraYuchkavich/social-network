@@ -1,20 +1,6 @@
 import {infoWeather,image} from '../localization/localization';
 import axios from 'axios';
-/*
-export let stateInit = {
-    watherDataT:null,
-    watherData:{city:{name:null,country:null},list:[
-        {temp:null,feels_like:null,wind_speed:null,humidity:null,icon:null,image:{name:null,wDay:null,hDay:null,wNight:null,hNight:null},day:null,posTranslate:null},
-        {temp:null,feels_like:null,wind_speed:null,humidity:null,icon:null,image:{name:null,wDay:null,hDay:null,wNight:null,hNight:null},day:null,posTranslate:null},
-        {temp:null,feels_like:null,wind_speed:null,humidity:null,icon:null,image:{name:null,wDay:null,hDay:null,wNight:null,hNight:null},day:null,posTranslate:null},
-        {temp:null,feels_like:null,wind_speed:null,humidity:null,icon:null,image:{name:null,wDay:null,hDay:null,wNight:null,hNight:null},day:null,posTranslate:null}
-    ]},
-    locationData:{city:null, place:null, country:null, lat:null, long:null},
-    backgroundData:null,
-    language:'ru',
-    timezone:null,
-    newSearch:'1'
-}*/
+
 
 
 export let getWeathern = async (stateInit,city,lang) => {
@@ -22,6 +8,7 @@ export let getWeathern = async (stateInit,city,lang) => {
     stateInit.language = lang;
     if (city == undefined || city == ''){
         let myloc = await  getDataw();
+        debugger;
         stateInit.locationData.city = myloc.city;
     } else {
         stateInit.locationData.city = city;
@@ -99,6 +86,7 @@ export let getWeathern = async (stateInit,city,lang) => {
 
 export  function getDataw(){
     const URLIP = "https://ipinfo.io/json?token=6bea51d61920f9";
+   
           return fetch(URLIP).then(response =>{
                return response.json();});
     }

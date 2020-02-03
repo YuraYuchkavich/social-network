@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import { withRouter,Redirect } from 'react-router-dom';
 
 import ProfileView from './profileView';
 import './profileView.module.css';
-
-import {setUserProfile} from '../../../../../redux/profile-reducer';
-import { withRouter } from 'react-router-dom';
+//import {getProfileData} from '../../../../../redux/profile-reducer';
+import {withAuthRedirect} from '../../../hoc/authRedirect';
 
 
 class ProfileViewContainer extends React.Component {
@@ -21,38 +21,35 @@ class ProfileViewContainer extends React.Component {
             userId = 2;
         }
         debugger;
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+userId).then(response =>{
-        this.props.setUserProfile(response.data);
-        
-    });
+        //this.props.getProfileData(userId)
+
+ 
     }
   
     render(){
-        return <ProfileView profile = {this.props.profile} />   
+        return  <ProfileView profile = {this.props.profile}
+                             isAuth = {this.props.isAuth} /> 
     }
 }
 
 
 let mapStateToProps = (state) => {
     return {
-       profile:state.profileReducer.profile
+       profile:state.profileReducer.profile,
+       isAuth:state.authReducer.isAuth
      
     }
 }
 
 /*let mapDispatchToProps = (dispatch) => {
     return {
-        follow: (value) =>{
-            dispatch(follow(value))},
-        unfollow: (value) => {
-            dispatch(unfollow(value))},
-        setUsers: (value) => {
-            dispatch(setUsers(value))},
-        setCurrentPage: (value) => {
-            dispatch(setCurrentPage(value))},
-        setTotalUsersCount: (value) => {
-            dispatch(setTotalUsersCount(value))},
-    }
-}*/
-let WithUrlDataContainerComponent = withRouter(ProfileViewContainer);
-export default connect(mapStateToProps,{setUserProfile})(WithUrlDataContainerComponent);
+        fetchData: url => dispatch(personsFetchData(url))
+   
+} }*/
+
+let AuthRedirectComponent = withAuthRedirect(ProfileViewContainer);
+
+
+
+let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
+export default connect(mapStateToProps,{})(WithUrlDataContainerComponent);

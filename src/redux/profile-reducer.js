@@ -1,4 +1,4 @@
-
+import  {UsersAPI} from '../api/profileAPI';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 export let stateInit ={
     profile:null
@@ -25,4 +25,22 @@ export const setUserProfile = (value) =>{
         type:SET_USER_PROFILE,
         profile:value
     }
+}
+
+export const getM =(userId) =>{ 
+    return (dispatch) =>{
+        debugger;
+        UsersAPI.getMessage(userId).then(response =>{
+                dispatch(setUserProfile(response)); 
+        });
+}
+}
+
+export const SendM =(message) =>{ 
+    return (dispatch) =>{
+        debugger;
+        UsersAPI.SendMessage(message).then(response =>{
+                dispatch(setUserProfile(response)); 
+        });
+}
 }
