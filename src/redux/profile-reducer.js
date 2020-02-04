@@ -30,7 +30,7 @@ export const setUserProfile = (value) =>{
 export const getM =(userId) =>{ 
     return (dispatch) =>{
         debugger;
-        UsersAPI.getMessage(userId).then(response =>{
+        UsersAPI.sendMessage().then(response =>{
                 dispatch(setUserProfile(response)); 
         });
 }

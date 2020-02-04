@@ -2,9 +2,9 @@ import React from 'react';
 
 import styles from './profileView.module.css';
 import { Redirect } from 'react-router-dom';
-
+import ProfileStatus from './profileStatus/profileStatus'
 let ProfileView = (props) =>{
-    if (props.isAuth == false) return <Redirect to = {"/login"}/>
+  
     if (!props.profile) {
         return (
             <div className = {styles.ProfileView}>
@@ -14,9 +14,12 @@ let ProfileView = (props) =>{
     }
 
     return (
+              
             <div className = {styles.ProfileView}>
-               <img src ={props.profile.photos.large}/>
-           </div>
+            <ProfileStatus status = "hello"/>
+             Image my profile
+            </div>
+       
            )
 }
 

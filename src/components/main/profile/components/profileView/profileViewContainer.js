@@ -5,8 +5,9 @@ import { withRouter,Redirect } from 'react-router-dom';
 
 import ProfileView from './profileView';
 import './profileView.module.css';
-//import {getProfileData} from '../../../../../redux/profile-reducer';
+import {getM} from '../../../../../redux/profile-reducer';
 import {withAuthRedirect} from '../../../hoc/authRedirect';
+import { compose } from 'redux';
 
 
 class ProfileViewContainer extends React.Component {
@@ -21,7 +22,7 @@ class ProfileViewContainer extends React.Component {
             userId = 2;
         }
         debugger;
-        //this.props.getProfileData(userId)
+        this.props.getM();
 
  
     }
@@ -46,10 +47,8 @@ let mapStateToProps = (state) => {
         fetchData: url => dispatch(personsFetchData(url))
    
 } }*/
-
-let AuthRedirectComponent = withAuthRedirect(ProfileViewContainer);
-
-
-
-let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
-export default connect(mapStateToProps,{})(WithUrlDataContainerComponent);
+export default compose(
+    connect(mapStateToProps,{getM}),
+    withRouter,
+    withAuthRedirect
+)(ProfileViewContainer);

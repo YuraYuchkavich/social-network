@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { faCross } from '@fortawesome/free-solid-svg-icons';
 
 
 const instance = axios.create({
@@ -9,6 +10,7 @@ const instance = axios.create({
     }
 
 });
+
 
 export const UsersAPI ={
     getUsers(currentPage = 1,pageSize = 3){
@@ -22,12 +24,23 @@ export const UsersAPI ={
     unfollow(userId){
         return instance.delete(`follow/${userId}`);
     },
-
-    getMessage(userID){
-        return axios.get(`/api/users`);
+    
+    getMessage(){
+        debugger;
+        return axios.get(`http://localhost:4000/api/users`);
     },
-    SendMessage(userID){
-        return axios.post(`/api/user`);
+    sendMessage(){
+        return axios.get(`http://localhost:4000/api/users`);
+      /*  var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            return fetch('http://localhost:4000/api/user', {
+            method: 'post',
+            headers: myHeaders,
+            mode: 'cors',
+            body: JSON.stringify({
+            "message": "test"
+            })
+            });*/
     }
 }
 

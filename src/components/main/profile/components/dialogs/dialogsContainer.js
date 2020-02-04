@@ -1,11 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
-import axios from 'axios';
 
 import Dialogs from './dialogs';
-
+import {withAuthRedirect} from '../../../hoc/authRedirect';
 import {getM} from '../../../../../redux/profile-reducer';
+import { compose } from 'redux';
 
 class DialogsContainer extends React.Component {
     constructor(props){
@@ -39,10 +38,7 @@ let mapStateToProps = (state) => {
         
     }
 }*/
-
-let AuthRedirectComponent = (props) =>{
-    if (props.isAuth == false) return <Redirect to = {"/login"}/>
-    return <DialogsContainer {...props}/>
-}
-
-export default connect(mapStateToProps,{getM})(AuthRedirectComponent);
+export default compose(
+    connect(mapStateToProps,{getM}),
+    withAuthRedirect
+)(DialogsContainer);

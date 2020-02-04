@@ -24,6 +24,7 @@
     "react-yandex-maps": "^4.2.0",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
+    "redux-form": "^8.3.0",
     "redux-thunk": "^2.3.0",
     "socket.io": "^2.3.0",
     "typeface-montserrat": "0.0.75"
@@ -48,6 +49,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:5000/"
+  }
 }
