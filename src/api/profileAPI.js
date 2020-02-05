@@ -45,5 +45,9 @@ export const UsersAPI ={
 }
 
 
-
+export const authAPI ={
+    login(){
+        return instance.post(`auth/login`,{})
+    }
+}
 

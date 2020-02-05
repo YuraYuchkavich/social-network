@@ -33,3 +33,7 @@ export const setUserData = (value) =>{
         data:value
     }
 }
+
+export const login = (email,password, rememberMe) =>(dispatch)=>{
+
+}
