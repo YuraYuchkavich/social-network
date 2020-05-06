@@ -5,6 +5,7 @@ import axios from 'axios';
 import Users from './users';
 import './users.module.css';
 import {follow,unfollow,setCurrentPage,setToggleIsFollowing,getUsers} from '../../../../../redux/users-reducer';
+import { getUsersSelector,getPageSize } from '../../../../../redux/selectors/users-selector';
 
 
 class UsersContainer extends React.Component {
@@ -42,8 +43,8 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-       users:state.usersReducer.users,
-       pageSize: state.usersReducer.pageSize,
+       users:getUsersSelector(state),
+       pageSize:getPageSize(state),
        totalUsersCount: state.usersReducer.totalUsersCount,
        currentPage:state.usersReducer.currentPage,
        followingInProgress:state.usersReducer.followingInProgress

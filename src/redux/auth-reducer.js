@@ -3,7 +3,7 @@ export let stateInit ={
        userId:null,
        email:null,
        login: null,
-       isAuth:false,
+       isAuth:true,
        isFetching:false,
 
 };

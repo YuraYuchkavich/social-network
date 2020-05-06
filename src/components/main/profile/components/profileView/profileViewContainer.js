@@ -5,7 +5,7 @@ import { withRouter,Redirect } from 'react-router-dom';
 
 import ProfileView from './profileView';
 import './profileView.module.css';
-import {getM} from '../../../../../redux/profile-reducer';
+import {getM,updateStatus} from '../../../../../redux/profile-reducer';
 import {withAuthRedirect} from '../../../hoc/authRedirect';
 import { compose } from 'redux';
 
@@ -29,14 +29,18 @@ class ProfileViewContainer extends React.Component {
   
     render(){
         return  <ProfileView profile = {this.props.profile}
-                             isAuth = {this.props.isAuth} /> 
+                             status = {this.props.status}
+                             isAuth = {this.props.isAuth}
+                             updateStatus = {this.props.updateStatus} /> 
     }
 }
 
 
 let mapStateToProps = (state) => {
+    debugger;
     return {
        profile:state.profileReducer.profile,
+       status:state.profileReducer.status,
        isAuth:state.authReducer.isAuth
      
     }
@@ -48,7 +52,7 @@ let mapStateToProps = (state) => {
    
 } }*/
 export default compose(
-    connect(mapStateToProps,{getM}),
+    connect(mapStateToProps,{updateStatus,getM}),
     withRouter,
     withAuthRedirect
 )(ProfileViewContainer);

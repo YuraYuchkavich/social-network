@@ -133,11 +133,11 @@ export const setToggleIsFollowing = (value) =>{
 
 
 export const getUsers =(currentPage,pageSize) =>{ 
-    return (dispatch) =>{
-        UsersAPI.getUsers(currentPage,pageSize).then(response =>{
+    return async (dispatch) =>{
+       let response = await UsersAPI.getUsers(currentPage,pageSize);
         dispatch(setUsers(response.items));
         dispatch(setTotalUsersCount(response.totalCount));
-    });
+   
 }
 }
 

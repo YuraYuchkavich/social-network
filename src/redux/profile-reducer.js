@@ -1,8 +1,10 @@
 import  {UsersAPI} from '../api/profileAPI';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
-export let stateInit ={
-    profile:null
+const UPDATE_STATUS = 'UPDATE_STATUS';
 
+export let stateInit ={
+    profile:null,
+    status:'test'
 };
 
 const  profileReducer = (state  = stateInit, action) => {
@@ -11,7 +13,12 @@ const  profileReducer = (state  = stateInit, action) => {
             {
                 debugger;
                 return {...state,profile: action.profile};
-            }   
+            } 
+            case UPDATE_STATUS:
+            {
+                debugger;
+                return {...state,status: action.status};
+            }     
         default:
             return state;
     }
@@ -24,6 +31,14 @@ export const setUserProfile = (value) =>{
     return{
         type:SET_USER_PROFILE,
         profile:value
+    }
+}
+
+
+export const updateStatus = (value) =>{
+    return{
+        type:UPDATE_STATUS,
+        status:value
     }
 }
 

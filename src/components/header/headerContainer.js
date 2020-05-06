@@ -7,15 +7,7 @@ import {setUserData} from '../../redux/auth-reducer'
 import './header.css';
 
 class HeaderContainer extends React.Component {
-    componentDidMount(){
-       
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,{withCredentials: true}).then(response =>{
-        if (response.data.resultCode === 0){
-            
-            this.props.setUserData(response.data);
-        }
-    });
-    }
+    
     render(){
         return (
         <Header {...this.props}/>
